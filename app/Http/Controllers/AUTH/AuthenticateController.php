@@ -116,7 +116,7 @@ class AuthenticateController extends Controller
 
         $request->validate([
             'email' => 'required|email|exists:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:4|confirmed',
             'password_confirmation' => 'required'
         ]);
 
