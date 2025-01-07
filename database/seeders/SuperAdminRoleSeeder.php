@@ -16,5 +16,10 @@ class SuperAdminRoleSeeder extends Seeder
                 'name' => 'Super Admin',
             ]);
         }
+        if (!Role::where('name','Customer')->first()){
+            Role::create([
+                'name' => 'Customer',
+            ]);
+        }
     }
 }

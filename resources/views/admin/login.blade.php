@@ -38,6 +38,9 @@
             @if (session('error'))
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
+            @if (session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
 
             <!-- Login Form -->
             <form action="{{ route('Login') }}" method="post">
@@ -62,6 +65,9 @@
                     <div class="col-8">
                         <p class="mb-1">
                             <a href="{{route('Forget.Password.Get')}}">I forgot my password</a>
+                        </p>
+                        <p class="mb-0">
+                            <a href="{{route('Register.Get')}}" class="text-center">Register a new membership</a>
                         </p>
                     </div>
                     <!-- /.col -->

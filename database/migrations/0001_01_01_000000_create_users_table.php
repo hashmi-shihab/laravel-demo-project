@@ -15,17 +15,17 @@ return new class extends Migration
             $prefix = 'user';
 
             $table->id();
-            $table->string("{$prefix}_name", 100)->unique();
+            $table->string("{$prefix}_name", 100);
             $table->string("{$prefix}_first_name", 100);
             $table->string("{$prefix}_middle_name", 100)->nullable();
             $table->string("{$prefix}_last_name", 100);
-            $table->string("email")->unique();
+            $table->string("email");
             $table->timestamp('email_verified_at')->nullable();
             $table->string("password", 100);
             $table->rememberToken();
             $table->date("{$prefix}_birth_date")->nullable();
             $table->tinyInteger("{$prefix}_gender")->nullable();
-            $table->string("{$prefix}_mobile", 25)->nullable()->unique();
+            $table->string("{$prefix}_mobile", 25)->nullable();
             $table->string("{$prefix}_phone", 25)->nullable();
             $table->string("{$prefix}_image")->nullable();
             $table->string("{$prefix}_street_address")->nullable();
