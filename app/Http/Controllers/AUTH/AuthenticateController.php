@@ -101,8 +101,8 @@ class AuthenticateController extends Controller
             return back()->with('message', 'We have e-mailed your password reset link!');
 
         }catch (\Throwable $th){
-            dd($th->getMessage());
-            return back()->with('error', 'Something went wrong!');
+            //dd($th->getMessage());
+            return back()->with('error', /*'Something went wrong!'*/$th->getMessage());
         }
     }
 
@@ -136,8 +136,8 @@ class AuthenticateController extends Controller
             DB::table('password_reset_tokens')->where(['email'=> $request->email])->delete();
             return redirect('login')->with('message', 'Your password has been changed!');
         }catch (\Throwable $th){
-            dd($th->getMessage());
-            return back()->with('error', 'Something went wrong!');
+            //dd($th->getMessage());
+            return back()->with('error', /*'Something went wrong!'*/$th->getMessage());
         }
     }
 
@@ -175,8 +175,8 @@ class AuthenticateController extends Controller
             $send_email->handle();
             return back()->with('success', 'We have e-mailed your account verification link!');
         }catch (\Throwable $th){
-            dd($th->getMessage());
-            return back()->with('error', 'Something went wrong!');
+            //dd($th->getMessage());
+            return back()->with('error', /*'Something went wrong!'*/$th->getMessage());
         }
     }
 
@@ -196,8 +196,8 @@ class AuthenticateController extends Controller
             }
             return redirect()->route('login')->with('error', 'Sorry your email cannot be identified.');
         }catch (\Throwable $th){
-            dd($th->getMessage());
-            return back()->with('error', 'Something went wrong!');
+            //dd($th->getMessage());
+            return back()->with('error', /*'Something went wrong!'*/$th->getMessage());
         }
 
     }
