@@ -70,10 +70,18 @@
                     </ul>
                 </li>--}}
                 <li class="nav-item">
-                    <a href="pages/gallery.html" class="nav-link">
+                    <a href="{{route('Dashboard')}}" class="nav-link {{  Route::currentRouteName() == ('Dashboard') ? 'bg-info' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('Profile.Get')}}" class="nav-link {{  Route::currentRouteName() == ('Profile.Get') || Route::currentRouteName() == ('Profile.Post') ? 'bg-info' : '' }}">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Profile
                         </p>
                     </a>
                 </li>

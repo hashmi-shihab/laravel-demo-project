@@ -27,32 +27,37 @@ class AuthenticateController extends Controller
 
     public function login(WebLoginRequest $request)
     {
-        $request->merge([
-            'identifier' => trim(strtolower($request->identifier)),
-            'password' => trim($request->password)
-        ]);
+        try {
+            $request->merge([
+                'identifier' => trim(strtolower($request->identifier)),
+                'password' => trim($request->password)
+            ]);
 
-        $user = User::whereRaw('LOWER(TRIM(email)) = ?', [$request->identifier])
-            ->orWhereRaw('LOWER(TRIM(user_name)) = ?', [$request->identifier])
-            ->orWhereRaw('TRIM(user_mobile) = ?', [$request->identifier])
-            ->first();
+            $user = User::whereRaw('LOWER(TRIM(email)) = ?', [$request->identifier])
+                ->orWhereRaw('LOWER(TRIM(user_name)) = ?', [$request->identifier])
+                ->orWhereRaw('TRIM(user_mobile) = ?', [$request->identifier])
+                ->first();
 
-        if (!$user) {
-            return back()->with('error', 'No account found with these credentials.');
+            if (!$user) {
+                return back()->with('error', 'No account found with these credentials.');
+            }
+
+            $credentials = [
+                'email' => $user->email,
+                'password' => $request->password
+            ];
+
+            if (Auth::attempt($credentials)) {
+                return redirect()->route('Dashboard');
+            }
+
+            throw ValidationException::withMessages([
+                'password' => ['The provided password is incorrect.'],
+            ]);
+        }catch (\Throwable $th){
+            //dd($th->getMessage());
+            return back()->with('error', /*'Something went wrong!'*/$th->getMessage());
         }
-
-        $credentials = [
-            'email' => $user->email,
-            'password' => $request->password
-        ];
-
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('Dashboard');
-        }
-
-        throw ValidationException::withMessages([
-            'password' => ['The provided password is incorrect.'],
-        ]);
 
     }
 

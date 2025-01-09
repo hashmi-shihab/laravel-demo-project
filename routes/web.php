@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AUTH\AuthenticateController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsVerifyEmail;
 
@@ -24,5 +25,7 @@ Route::post('reset-password', [AuthenticateController::class, 'submitResetPasswo
 Route::middleware(['auth',IsVerifyEmail::class])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('Dashboard');
     Route::post('logout', [AuthenticateController::class, 'logout'])->name('Logout');
+    Route::get('profile-edit', [UserProfileController::class, 'profileEdit'])->name('Profile.Get');
+    Route::put('profile-update', [UserProfileController::class, 'profileUpdate'])->name('Profile.Post');
 });
 

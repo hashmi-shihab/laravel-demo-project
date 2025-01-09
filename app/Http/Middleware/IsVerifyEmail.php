@@ -20,7 +20,7 @@ class IsVerifyEmail
         if (!Auth::user()->email_verified_at) {
             Session::flush();
             auth()->logout();
-            return redirect()->route('login')->with('message', 'You need to verify your account. We have sent you an verification link, please check your email.');
+            return redirect()->route('login')->with('error', 'You need to verify your account. We have sent you an verification link, please check your email.');
         }
         return $next($request);
     }
