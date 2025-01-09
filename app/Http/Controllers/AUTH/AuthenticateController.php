@@ -151,7 +151,7 @@ class AuthenticateController extends Controller
         try {
             $data = $request->all();
             $data['role_id'] = 2;
-            $user = User::create($data);
+            $user = User::updateOrCreate(['email' => $data['email']],$data);
             $user->assignRole('Customer');
             $token = Str::random(64);
 
