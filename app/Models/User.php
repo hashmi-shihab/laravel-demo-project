@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
+
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -23,6 +24,7 @@ class User extends Authenticatable
     protected $fillable = [
         'user_name',
         'role_id',
+        'email_verified_at',
         'user_first_name',
         'user_middle_name',
         'user_last_name',
@@ -68,7 +70,10 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
             'password' => 'hashed',
         ];
     }
+
 }

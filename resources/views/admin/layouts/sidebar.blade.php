@@ -1,14 +1,34 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    {{--<a href="index3.html" class="brand-link">
-        <img src="{{asset('admin/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a>--}}
+    <a href="{{route('Profile.Get')}}" class="brand-link text-center">
+        <img src="{{asset('admin/dist/img/user2-160x160.jpg')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light" style="font-family: 'Source Sans Pro';font-size: medium">
+            @auth
+                {{ Auth::user()->user_first_name }} {{ Auth::user()->user_last_name }}
+            @else
+                Alexander Pierce
+            @endauth
+        </span>
+    </a>
+    {{--<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+            <img src="{{asset('admin/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+            <a href="#" class="d-block">
+                @auth
+                    {{ Auth::user()->user_first_name }} {{ Auth::user()->user_last_name }}
+                @else
+                    Alexander Pierce
+                @endauth
+            </a>
+        </div>
+    </div>--}}
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        {{--<div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 <img src="{{asset('admin/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
@@ -21,7 +41,7 @@
                     @endauth
                 </a>
             </div>
-        </div>
+        </div>--}}
 
         <!-- SidebarSearch Form -->
         {{--<div class="form-inline">
@@ -84,6 +104,35 @@
                             Profile
                         </p>
                     </a>
+                </li>
+                <li class="nav-item {{  Route::currentRouteName() == ('users.create') || Route::currentRouteName() == ('users.index') || Route::currentRouteName() == ('users.edit')   ? 'menu-is-opening menu-open' : '' }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Users
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('users.create')}}" class="nav-link {{  Route::currentRouteName() == ('users.create') ? 'bg-info' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('users.index')}}" class="nav-link {{  Route::currentRouteName() == ('users.index') ? 'bg-info' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List</p>
+                            </a>
+                        </li>
+                        {{--<li class="nav-item">
+                            <a href="../../index3.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Dashboard v3</p>
+                            </a>
+                        </li>--}}
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <form id="logout-form" action="{{ route('Logout') }}" method="POST" style="display: none;">

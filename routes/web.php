@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AUTH\AuthenticateController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsVerifyEmail;
@@ -27,5 +28,7 @@ Route::middleware(['auth',IsVerifyEmail::class])->group(function () {
     Route::post('logout', [AuthenticateController::class, 'logout'])->name('Logout');
     Route::get('profile-edit', [UserProfileController::class, 'profileEdit'])->name('Profile.Get');
     Route::put('profile-update', [UserProfileController::class, 'profileUpdate'])->name('Profile.Post');
+    Route::resource('users', UserController::class);
+    Route::get('users-list', [UserController::class, 'getUsersList'])->name('Users.List');
 });
 
