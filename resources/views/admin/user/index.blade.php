@@ -119,6 +119,7 @@
                     { "data": "created_at", "name": "created_at" },
                     { "data": "actions", "name": "actions", "orderable": false, "searchable": false }
                 ],
+                "dom": "Bfrtip",
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
