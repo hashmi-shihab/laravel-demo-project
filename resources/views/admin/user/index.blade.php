@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{asset('admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/plugins/jquery-ui/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{asset('admin/plugins/jquery-ui/jquery-ui.min.css')}}">
 @endpush
 @section('content')
 
