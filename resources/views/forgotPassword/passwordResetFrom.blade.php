@@ -62,10 +62,10 @@
             </form>
 
             <p class="mt-3 mb-1">
-                <a href="login.html">Login</a>
+                <a href="{{ route('login') }}">Login</a>
             </p>
             <p class="mb-0">
-                <a href="register.html" class="text-center">Register a new membership</a>
+                <a href="{{route('Register.Get')}}" class="text-center">Register a new membership</a>
             </p>
         </div>
         <!-- /.login-card-body -->
